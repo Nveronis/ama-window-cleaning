@@ -1,0 +1,8 @@
+# Environment variables — never commit the real key
+.env
+
+# Build output — contains the real key baked in
+dist/
+
+# Dependencies
+node_modules/
