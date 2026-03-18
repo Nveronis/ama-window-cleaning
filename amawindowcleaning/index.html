@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMA Window Cleaning — Central Massachusetts</title>
+  <link rel="icon" type="image/png" href="brand_assets/AMAlogo.png">
+  <meta name="description" content="Professional residential window cleaning in Central Massachusetts. Owner-operated by Austin. Free estimates, fully insured. Serving Worcester, Auburn, Shrewsbury and surrounding areas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:      '#0F2B3C',
+            blue:      '#5080C0',
+            sky:       '#50A0D0',
+            ice:       '#E0F0F0',
+            lightgray: '#F5F7FA',
+            textgray:  '#4A5568',
+          },
+          fontFamily: {
+            display: ['Montserrat', 'sans-serif'],
+            body:    ['Open Sans', 'sans-serif'],
+          },
+          letterSpacing: {
+            tightest: '-0.04em',
+            tighter:  '-0.03em',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body { font-family: 'Open Sans', sans-serif; color: #4A5568; background: #FFFFFF; margin: 0; }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* Grain overlay for dark sections */
+    .grain::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* Card lift animation */
+    .card-lift {
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+    }
+    .card-lift:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(15,43,60,0.18), 0 4px 16px rgba(15,43,60,0.1);
+    }
+
+    /* Button spring */
+    .btn {
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease, background-color 0.15s ease, color 0.15s ease;
+      display: inline-block;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0) scale(0.98); }
+    .btn:focus-visible { outline: 2px solid #50A0D0; outline-offset: 3px; }
+
+    /* Video hover scale */
+    .vid-item {
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .vid-item:hover { transform: scale(1.03); }
+
+    /* Testimonials marquee */
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-wrapper { position: relative; overflow: hidden; padding: 8px 0; }
+    .marquee-wrapper:hover .marquee-strip { animation-play-state: paused; }
+    .marquee-strip {
+      display: flex;
+      flex-direction: row;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .tcard {
+      width: 320px;
+      flex-shrink: 0;
+      margin-right: 1.5rem;
+      border-radius: 14px;
+      border-top: 3px solid #50A0D0;
+      background: linear-gradient(to bottom, rgba(224,240,240,0.55), rgba(224,240,240,0.08));
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s ease;
+    }
+    .tcard:hover { background: linear-gradient(to bottom, rgba(224,240,240,0.75), rgba(224,240,240,0.2)); }
+    .tcard-author { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .tcard-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .tcard-name { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #0F2B3C; font-size: 15px; line-height: 1.2; margin: 0; }
+    .tcard-handle { font-family: 'Open Sans', sans-serif; color: #4A5568; font-size: 13px; margin: 2px 0 0; }
+    .tcard-stars { color: #FBBF24; font-size: 16px; letter-spacing: 3px; margin-bottom: 10px; }
+    .tcard-text { font-family: 'Open Sans', sans-serif; color: #4A5568; font-size: 14px; line-height: 1.75; flex: 1; margin: 0 0 16px; }
+    .tcard-footer { display: flex; align-items: center; gap: 6px; padding-top: 12px; border-top: 1px solid rgba(15,43,60,0.07); margin-top: auto; }
+    .tcard-badge { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #1877F2; font-size: 12px; }
+    .tcard-fade-l, .tcard-fade-r { pointer-events: none; position: absolute; top: 0; bottom: 0; width: 20%; z-index: 10; }
+    .tcard-fade-l { left: 0;  background: linear-gradient(to right, #F5F7FA 0%, transparent 100%); }
+    .tcard-fade-r { right: 0; background: linear-gradient(to left,  #F5F7FA 0%, transparent 100%); }
+
+    /* Town tile */
+    .town-tile {
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+    }
+    .town-tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(15,43,60,0.12);
+    }
+
+    /* Input/select focus */
+    input:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #5080C0;
+      border-color: transparent;
+    }
+
+    /* === 3D Image Carousel === */
+    .c-outer {
+      position: relative;
+      width: 70vmin;
+      height: 70vmin;
+      margin: 0 auto;
+    }
+    .c-track {
+      position: absolute;
+      display: flex;
+      left: -4vmin;
+      top: 0;
+      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .c-slide-wrap {
+      perspective: 1200px;
+      transform-style: preserve-3d;
+      flex-shrink: 0;
+    }
+    .c-slide {
+      width: 70vmin;
+      height: 70vmin;
+      margin: 0 4vmin;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: bottom;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #1D1F2F;
+    }
+    .c-slide.c-inactive { transform: scale(0.98) rotateX(8deg); }
+    .c-slide.c-active   { transform: scale(1) rotateX(0deg); }
+    .c-img-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      transition: transform 0.12s ease-out;
+    }
+    .c-img {
+      position: absolute;
+      top: -10%; left: -10%;
+      width: 120%; height: 120%;
+      object-fit: cover;
+      transition: opacity 0.6s ease-in-out;
+    }
+    .c-slide.c-inactive .c-img { opacity: 0.5; }
+    .c-slide.c-active   .c-img { opacity: 1; }
+    .c-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 1s ease;
+      pointer-events: none;
+    }
+    .c-slide.c-active .c-overlay { opacity: 1; }
+    .c-content {
+      position: relative; z-index: 10;
+      padding: 4vmin;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      height: 100%; text-align: center;
+      opacity: 0; visibility: hidden;
+      transition: opacity 1s ease;
+      pointer-events: none;
+    }
+    .c-slide.c-active .c-content { opacity: 1; visibility: visible; pointer-events: auto; }
+    .c-nav {
+      position: absolute;
+      display: flex; justify-content: center;
+      width: 100%;
+      top: calc(100% + 1.5rem);
+    }
+    .c-nav-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 8px; color: white;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), background 0.15s ease;
+    }
+    .c-nav-btn:hover  { background: rgba(255,255,255,0.24); transform: translateY(-2px); }
+    .c-nav-btn:active { transform: scale(0.95); }
+    .c-nav-btn.c-prev { transform: rotate(180deg); }
+    .c-nav-btn.c-prev:hover { transform: rotate(180deg) translateY(2px); }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     1. NAVIGATION
+============================================================ -->
+<nav class="sticky top-0 z-50 bg-navy" style="box-shadow: 0 2px 24px rgba(0,0,0,0.35);">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center rounded-xl" style="outline:none;" onfocus="this.style.outline='2px solid #50A0D0'" onblur="this.style.outline='none'">
+      <div class="bg-white rounded-xl px-4 py-2">
+        <img src="brand_assets/AMAlogo.png" alt="AMA Window Cleaning" class="h-16 w-auto" />
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="#services" class="font-display font-600 text-sm text-white/75 hover:text-white transition-[color] duration-150 uppercase tracking-wide">Services</a>
+      <a href="#about" class="font-display font-600 text-sm text-white/75 hover:text-white transition-[color] duration-150 uppercase tracking-wide">About</a>
+      <a href="#plans" class="font-display font-600 text-sm text-white/75 hover:text-white transition-[color] duration-150 uppercase tracking-wide">Plans</a>
+      <a href="#reviews" class="font-display font-600 text-sm text-white/75 hover:text-white transition-[color] duration-150 uppercase tracking-wide">Reviews</a>
+      <a href="#areas" class="font-display font-600 text-sm text-white/75 hover:text-white transition-[color] duration-150 uppercase tracking-wide">Service Areas</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <a href="#quote" class="hidden lg:block btn bg-blue text-white font-display font-700 text-sm uppercase tracking-wide px-6 py-3 rounded-lg hover:bg-sky" style="box-shadow: none;">
+      Get a Free Quote
+    </a>
+
+    <!-- Mobile Hamburger -->
+    <button id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-[background-color]" style="outline:none;">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden bg-navy border-t border-white/10 px-6 py-5 flex-col gap-4">
+    <a href="#services" onclick="toggleMenu()" class="font-display font-700 text-white uppercase tracking-wide text-sm hover:text-sky transition-[color]">Services</a>
+    <a href="#about" onclick="toggleMenu()" class="font-display font-700 text-white uppercase tracking-wide text-sm hover:text-sky transition-[color]">About</a>
+    <a href="#plans" onclick="toggleMenu()" class="font-display font-700 text-white uppercase tracking-wide text-sm hover:text-sky transition-[color]">Plans</a>
+    <a href="#reviews" onclick="toggleMenu()" class="font-display font-700 text-white uppercase tracking-wide text-sm hover:text-sky transition-[color]">Reviews</a>
+    <a href="#areas" onclick="toggleMenu()" class="font-display font-700 text-white uppercase tracking-wide text-sm hover:text-sky transition-[color]">Service Areas</a>
+    <a href="#quote" onclick="toggleMenu()" class="btn bg-blue text-white font-display font-700 uppercase text-sm text-center py-3 rounded-lg hover:bg-sky mt-2">Get a Free Quote</a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     2. HERO
+============================================================ -->
+<section class="grain relative overflow-hidden" style="background: radial-gradient(ellipse at 15% 60%, rgba(80,160,208,0.18) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(80,128,192,0.14) 0%, transparent 50%), #0F2B3C;">
+
+  <!-- Company name banner -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-14 lg:pt-20 pb-0 text-center">
+    <h1 class="font-display font-800 text-white uppercase tracking-tighter text-3xl lg:text-4xl xl:text-5xl">AMA Window Cleaning</h1>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pt-10 pb-20 lg:pb-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+    <!-- Left: Copy -->
+    <div>
+      <div class="inline-flex items-center gap-2 border border-white/20 text-sky text-xs font-display font-700 uppercase tracking-widest px-4 py-2 rounded-full mb-6" style="background: rgba(255,255,255,0.06);">
+        <svg class="w-3.5 h-3.5 flex-shrink-0" style="fill:#50A0D0;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        Central Massachusetts' Trusted Window Cleaners
+      </div>
+
+      <h2 class="font-display font-800 text-white uppercase leading-[1.08] tracking-tighter text-4xl lg:text-5xl xl:text-[54px] mb-6">
+        Professional<br/>Window Cleaning<br/><span style="color: #50A0D0;">In Central<br/>Massachusetts</span>
+      </h2>
+
+      <p class="font-body text-white/65 text-lg leading-[1.75] mb-8 max-w-[440px]">
+        Making every window sparkle — with professionalism, care, and a personal touch. Owner-operated by Austin, serving homeowners across Central MA.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 mb-8">
+        <a href="#quote" class="btn bg-blue text-white font-display font-700 uppercase tracking-wide text-sm px-8 py-4 rounded-lg text-center hover:bg-sky">
+          Get Your Free Quote
+        </a>
+        <a href="tel:7744020223" class="btn flex items-center justify-center gap-3 border-2 border-white/30 text-white font-display font-700 uppercase tracking-wide text-sm px-8 py-4 rounded-lg text-center hover:border-white hover:bg-white/10">
+          <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          (774) 402-0223
+        </a>
+      </div>
+
+      <!-- Trust Strip -->
+      <div class="flex flex-wrap gap-5 text-white/55 text-sm font-body">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 flex-shrink-0" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Free Estimates
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 flex-shrink-0" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Fully Insured
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 flex-shrink-0" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Owner-Operated by Austin
+        </span>
+      </div>
+    </div>
+
+    <!-- Right: Quote Form -->
+    <div id="quote" class="bg-white rounded-2xl p-8" style="box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.2);">
+      <h2 class="font-display font-800 text-navy text-xl uppercase tracking-tight mb-1">Get Your Free Quote</h2>
+      <p class="font-body text-textgray text-sm mb-6">In 60 seconds or less — no obligation.</p>
+      <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-4 quote-form">
+        <input type="hidden" name="access_key" value="affa42ad-4481-4718-a2f5-4ea536b31ab6">
+        <input type="hidden" name="subject" value="New Quote Request — AMA Window Cleaning">
+        <input type="hidden" name="from_name" value="AMA Window Cleaning Website">
+        <input type="checkbox" name="botcheck" style="display:none">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="font-body text-xs font-600 text-navy uppercase tracking-wide mb-1.5 block">Name</label>
+            <input type="text" name="name" placeholder="Your name" required class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-body text-navy" />
+          </div>
+          <div>
+            <label class="font-body text-xs font-600 text-navy uppercase tracking-wide mb-1.5 block">Phone</label>
+            <input type="tel" name="phone" placeholder="(508) 000-0000" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-body text-navy" />
+          </div>
+        </div>
+        <div>
+          <label class="font-body text-xs font-600 text-navy uppercase tracking-wide mb-1.5 block">Email</label>
+          <input type="email" name="email" placeholder="your@email.com" required class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-body text-navy" />
+        </div>
+        <div>
+          <label class="font-body text-xs font-600 text-navy uppercase tracking-wide mb-1.5 block">Address</label>
+          <input type="text" name="address" placeholder="Your home address" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-body text-navy" />
+        </div>
+        <div>
+          <label class="font-body text-xs font-600 text-navy uppercase tracking-wide mb-1.5 block">Service Type</label>
+          <select name="service" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-body text-navy bg-white">
+            <option value="">Select a service...</option>
+            <option>Interior + Exterior Window Cleaning</option>
+            <option>Exterior Only Window Cleaning</option>
+            <option>Interior Only Window Cleaning</option>
+          </select>
+        </div>
+        <button type="submit" class="btn w-full bg-blue text-white font-display font-700 uppercase tracking-wide text-sm py-4 rounded-lg hover:bg-sky mt-1" style="display:block; text-align:center;">
+          Get My Free Quote &rarr;
+        </button>
+        <div class="form-msg hidden font-body text-sm text-center py-2 px-4 rounded-lg"></div>
+        <p class="font-body text-xs text-center text-textgray/50">We'll respond within 24 hours.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     3. SERVICES
+============================================================ -->
+<section id="services" class="bg-lightgray py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="font-display font-800 text-navy uppercase tracking-tighter text-3xl lg:text-4xl mb-3">Window Cleaning Services</h2>
+      <p class="font-body text-textgray text-base leading-[1.7] max-w-xl mx-auto">Professional, thorough, and always on time. Choose the service that fits your home's needs.</p>
+    </div>
+
+    <!-- 3 Core Service Cards -->
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+
+      <!-- Interior + Exterior -->
+      <div class="card-lift bg-white rounded-2xl p-8 relative" style="box-shadow: 0 4px 24px rgba(15,43,60,0.07);">
+        <div class="absolute top-5 right-5 bg-blue text-white font-display font-700 text-xs uppercase tracking-wide px-3 py-1 rounded-full">&#9733; Most Popular</div>
+        <div class="w-14 h-14 bg-ice rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-7 h-7" style="color:#50A0D0;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <rect x="2" y="3" width="20" height="18" rx="2"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <line x1="12" y1="3" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-700 text-navy text-xl mb-2">Interior + Exterior</h3>
+        <p class="font-body text-sm mb-3 leading-[1.6]" style="color:#50A0D0; font-style:italic;">Complete inside-and-out cleaning for a streak-free, crystal-clear finish.</p>
+        <p class="font-body text-textgray text-sm leading-[1.75]">Both sides of every window cleaned for spotless glass from every angle. The most popular choice for homeowners who want their windows to look brand new. Courtesy wipe of sills included.</p>
+      </div>
+
+      <!-- Exterior Only -->
+      <div class="card-lift bg-white rounded-2xl p-8" style="box-shadow: 0 4px 24px rgba(15,43,60,0.07);">
+        <div class="w-14 h-14 bg-ice rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-7 h-7" style="color:#50A0D0;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-700 text-navy text-xl mb-2">Exterior Only</h3>
+        <p class="font-body text-sm mb-3 leading-[1.6]" style="color:#50A0D0; font-style:italic;">Professional exterior washing to remove dirt, pollen, and buildup.</p>
+        <p class="font-body text-textgray text-sm leading-[1.75]">Ideal for routine maintenance or homes where interior access is limited. Professional-grade tools tackle even hard-to-reach windows on multi-level homes. Courtesy wipe of sills included.</p>
+      </div>
+
+      <!-- Interior Only -->
+      <div class="card-lift bg-white rounded-2xl p-8" style="box-shadow: 0 4px 24px rgba(15,43,60,0.07);">
+        <div class="w-14 h-14 bg-ice rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-7 h-7" style="color:#50A0D0;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <rect x="5" y="2" width="14" height="20" rx="2"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <line x1="12" y1="2" x2="12" y2="22"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-700 text-navy text-xl mb-2">Interior Only</h3>
+        <p class="font-body text-sm mb-3 leading-[1.6]" style="color:#50A0D0; font-style:italic;">Focused cleaning to remove smudges, fingerprints, and buildup from inside.</p>
+        <p class="font-body text-textgray text-sm leading-[1.75]">Perfect after winter months, construction, or when the exterior is still in good shape. Every interior pane carefully cleaned for a streak-free finish. Courtesy wipe of sills included.</p>
+      </div>
+    </div>
+
+    <!-- Add-On Services -->
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <div class="flex items-center gap-4 bg-white border border-sky/25 rounded-xl px-6 py-4" style="box-shadow: 0 2px 12px rgba(15,43,60,0.05);">
+        <div class="w-11 h-11 bg-ice rounded-lg flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5" style="color:#50A0D0;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <rect x="3" y="3" width="18" height="18" rx="1"/>
+            <path d="M3 9h18M9 3v18"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-0.5">
+            <span class="font-display font-700 text-navy text-sm uppercase tracking-wide">Screen Cleaning</span>
+            <span class="bg-sky text-white text-xs font-display font-700 uppercase px-2 py-0.5 rounded-full">Add-On</span>
+          </div>
+          <p class="font-body text-textgray text-xs leading-[1.5]">Screens removed, hand-washed, rinsed &amp; reinstalled</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 bg-white border border-sky/25 rounded-xl px-6 py-4" style="box-shadow: 0 2px 12px rgba(15,43,60,0.05);">
+        <div class="w-11 h-11 bg-ice rounded-lg flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5" style="color:#50A0D0;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-0.5">
+            <span class="font-display font-700 text-navy text-sm uppercase tracking-wide">Deep Track &amp; Sill</span>
+            <span class="bg-sky text-white text-xs font-display font-700 uppercase px-2 py-0.5 rounded-full">Add-On</span>
+          </div>
+          <p class="font-body text-textgray text-xs leading-[1.5]">Deep-clean every groove, track, and sill</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     4. ABOUT AUSTIN
+============================================================ -->
+<section id="about" class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Bio -->
+      <div>
+        <!-- Overline -->
+        <p class="font-body text-sky font-600 uppercase tracking-widest text-xs mb-4">Owner & Operator</p>
+
+        <h2 class="font-display font-800 text-navy uppercase tracking-tighter text-3xl lg:text-4xl mb-6 leading-[1.1]">
+          Meet Austin
+        </h2>
+
+        <p class="font-body text-textgray text-base leading-[1.8] mb-5">
+          Hi, I'm Austin Ayotte, the founder of this business. A student at Western New England who turned a strong work ethic and a passion for doing things right into a window cleaning company built from the ground up. I launched this business at the start of 2023 with the simple belief that every customer deserves to be treated like a priority. That means showing up on time, communicating clearly, and not calling a job done until the results speak for themselves. No streaks, no shortcuts.
+        </p>
+        <p class="font-body text-textgray text-base leading-[1.8] mb-5">
+          What sets us apart isn't just the clean windows; it's the experience. I know what it feels like to hire someone and wonder if they'll actually show up or care about your home the way you do. I built this company to be the kind of service I would want to hire myself: reliable, honest, and genuinely invested in getting it right.
+        </p>
+        <p class="font-body text-textgray text-base leading-[1.8] mb-8">
+          Whether you're a homeowner looking to brighten up your space or a business wanting to make a great first impression, I would love to help. Reach out today — I'm always happy to chat, answer questions, or put together a free quote.
+        </p>
+
+        <!-- Stat strip -->
+        <div class="flex flex-wrap gap-6 mb-8">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(80,160,208,0.12);">
+              <svg class="w-4 h-4" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <div>
+              <p class="font-display font-700 text-navy text-sm">5-Star Rated</p>
+              <p class="font-body text-textgray text-xs">Facebook Reviews</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(80,160,208,0.12);">
+              <svg class="w-4 h-4" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <p class="font-display font-700 text-navy text-sm">Fully Insured</p>
+              <p class="font-body text-textgray text-xs">Complete liability coverage</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(80,160,208,0.12);">
+              <svg class="w-4 h-4" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <p class="font-display font-700 text-navy text-sm">Owner-Operated</p>
+              <p class="font-body text-textgray text-xs">Austin on every job</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#quote" class="btn bg-blue text-white font-display font-700 uppercase tracking-wide text-sm px-8 py-4 rounded-lg hover:bg-sky">
+          Get a Free Quote
+        </a>
+      </div>
+
+      <!-- Right: Austin Photo -->
+      <div class="relative card-lift">
+        <div class="relative rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(15,43,60,0.22), 0 6px 20px rgba(15,43,60,0.12);">
+          <img src="brand_assets/austin.jpeg" alt="Austin — Owner & Operator, AMA Window Cleaning" class="w-full object-cover" style="height: 520px;" />
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(15,43,60,0.65) 0%, transparent 50%);"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <p class="font-display font-800 text-white text-base uppercase tracking-wide">Austin</p>
+            <p class="font-body text-white/65 text-sm">Owner &amp; Operator &middot; AMA Window Cleaning &middot; Central Massachusetts</p>
+          </div>
+        </div>
+        <!-- Decorative frame -->
+        <div class="absolute -inset-3 border border-sky/20 rounded-3xl pointer-events-none"></div>
+        <!-- Sky accent dot -->
+        <div class="absolute -top-4 -right-4 w-16 h-16 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(80,160,208,0.25) 0%, transparent 70%);"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     5. WHY CHOOSE AMA
+============================================================ -->
+<section id="why-ama" class="grain relative overflow-hidden py-20" style="background: radial-gradient(ellipse at 85% 50%, rgba(80,160,208,0.12) 0%, transparent 55%), #0F2B3C;">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+
+    <!-- Left: Trust Points -->
+    <div>
+      <h2 class="font-display font-800 text-white uppercase tracking-tighter text-3xl lg:text-4xl mb-8 leading-[1.1]">
+        Why Choose<br/><span style="color:#50A0D0;">AMA Window Cleaning</span>
+      </h2>
+
+      <div class="flex flex-col gap-6 mb-10">
+        <div class="flex items-start gap-4">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(80,160,208,0.2);">
+            <svg class="w-4 h-4" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+          <div>
+            <h4 class="font-display font-700 text-white text-base mb-1">Free Estimates</h4>
+            <p class="font-body text-white/55 text-sm leading-[1.7]">No obligation, no surprises. Get a clear quote before any work begins.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(80,160,208,0.2);">
+            <svg class="w-4 h-4" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+          <div>
+            <h4 class="font-display font-700 text-white text-base mb-1">Fully Insured</h4>
+            <p class="font-body text-white/55 text-sm leading-[1.7]">Your home is fully protected. AMA Window Cleaning carries complete liability insurance.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(80,160,208,0.2);">
+            <svg class="w-4 h-4" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+          <div>
+            <h4 class="font-display font-700 text-white text-base mb-1">Owner-Operated by Austin</h4>
+            <p class="font-body text-white/55 text-sm leading-[1.7]">You get the owner every time. Austin personally handles every job — no subcontractors, no shortcuts.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(80,160,208,0.2);">
+            <svg class="w-4 h-4" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          </div>
+          <div>
+            <h4 class="font-display font-700 text-white text-base mb-1">Satisfaction Guaranteed</h4>
+            <p class="font-body text-white/55 text-sm leading-[1.7]">Your windows will look brand new. If you're not completely satisfied, we make it right.</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="#quote" class="btn bg-blue text-white font-display font-700 uppercase tracking-wide text-sm px-8 py-4 rounded-lg hover:bg-sky">
+        Get a Free Quote
+      </a>
+    </div>
+
+    <!-- Right: Austin in Action Video -->
+    <div class="relative">
+      <div class="relative rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.5);">
+        <video autoplay muted loop playsinline class="w-full object-cover" style="height: 480px;">
+          <source src="brand_assets/IMG_1481.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(15,43,60,0.75) 0%, transparent 55%);"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <p class="font-display font-800 text-white text-base uppercase tracking-wide">Austin in Action</p>
+          <p class="font-body text-white/65 text-sm">Owner &amp; Operator &middot; AMA Window Cleaning</p>
+        </div>
+      </div>
+      <!-- Decorative frame -->
+      <div class="absolute -inset-3 border border-sky/20 rounded-3xl pointer-events-none"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     5. SERVICE PLANS
+============================================================ -->
+<section id="plans" class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="font-display font-800 text-navy uppercase tracking-tighter text-3xl lg:text-4xl mb-3">Flexible Service Plans</h2>
+      <p class="font-body text-textgray text-base leading-[1.7] max-w-xl mx-auto">Recurring plans include a discount as a thank-you for your loyalty.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- One-Time -->
+      <div class="card-lift bg-lightgray border border-gray-200 rounded-2xl p-8 flex flex-col" style="box-shadow: 0 4px 20px rgba(15,43,60,0.06);">
+        <div>
+          <span class="font-body text-xs text-textgray/55 uppercase tracking-widest">One-Time</span>
+          <h3 class="font-display font-700 text-navy text-2xl mt-1.5 mb-2">One-Time Clean</h3>
+          <span class="inline-block bg-gray-200 text-textgray font-display font-700 text-xs uppercase tracking-wide px-3 py-1 rounded-full">Standard Pricing</span>
+        </div>
+        <p class="font-body text-sm leading-[1.6] mt-4 mb-3" style="color:#50A0D0; font-style:italic;">A single-visit professional window cleaning — perfect for first-time customers, seasonal refreshes, or pre-event prep.</p>
+        <p class="font-body text-textgray text-sm leading-[1.75] flex-1">Great for customers who want to try AMA Window Cleaning or need a one-off deep clean. No commitment required. Many customers start here and upgrade to a recurring plan after experiencing the quality firsthand.</p>
+        <a href="#quote" class="btn mt-8 bg-navy text-white font-display font-700 uppercase tracking-wide text-sm py-4 rounded-lg hover:bg-blue" style="display:block; text-align:center;">
+          Book This Plan
+        </a>
+      </div>
+
+      <!-- Bi-Annual (featured) -->
+      <div class="card-lift rounded-2xl p-8 flex flex-col relative overflow-hidden" style="background: #0F2B3C; box-shadow: 0 12px 48px rgba(15,43,60,0.35), 0 0 0 2px #5080C0;">
+        <div class="absolute top-5 right-5 bg-blue text-white font-display font-700 text-xs uppercase tracking-wide px-3 py-1 rounded-full">&#9733; Most Popular</div>
+        <div>
+          <span class="font-body text-xs uppercase tracking-widest" style="color: rgba(255,255,255,0.45);">Recurring</span>
+          <h3 class="font-display font-700 text-white text-2xl mt-1.5 mb-2">Bi-Annual Plan</h3>
+          <span class="inline-block bg-blue text-white font-display font-700 text-xs uppercase tracking-wide px-3 py-1 rounded-full">10% Discount</span>
+        </div>
+        <p class="font-body text-sm leading-[1.6] mt-4 mb-3" style="color:#50A0D0; font-style:italic;">Twice-a-year scheduled cleanings to keep windows looking their best through every season.</p>
+        <p class="font-body text-sm leading-[1.75] flex-1" style="color: rgba(255,255,255,0.55);">The most popular recurring option. Customers are automatically scheduled for two visits per year. The 10% discount is applied to each visit — a reward for your loyalty.</p>
+        <a href="#quote" class="btn mt-8 bg-blue text-white font-display font-700 uppercase tracking-wide text-sm py-4 rounded-lg hover:bg-sky" style="display:block; text-align:center;">
+          Book This Plan
+        </a>
+      </div>
+
+      <!-- Tri-Annual -->
+      <div class="card-lift bg-lightgray border border-gray-200 rounded-2xl p-8 flex flex-col" style="box-shadow: 0 4px 20px rgba(15,43,60,0.06);">
+        <div>
+          <span class="font-body text-xs text-textgray/55 uppercase tracking-widest">Best Value</span>
+          <h3 class="font-display font-700 text-navy text-2xl mt-1.5 mb-2">Tri-Annual Plan</h3>
+          <span class="inline-block bg-sky text-white font-display font-700 text-xs uppercase tracking-wide px-3 py-1 rounded-full">15% Discount</span>
+        </div>
+        <p class="font-body text-sm leading-[1.6] mt-4 mb-3" style="color:#50A0D0; font-style:italic;">Three cleanings per year for homeowners who want consistently spotless windows all year round.</p>
+        <p class="font-body text-textgray text-sm leading-[1.75] flex-1">Ideal for customers who notice buildup more frequently. Visits are spaced roughly every four months for maximum coverage. The 15% discount — the best value available — is applied to every visit.</p>
+        <a href="#quote" class="btn mt-8 bg-navy text-white font-display font-700 uppercase tracking-wide text-sm py-4 rounded-lg hover:bg-blue" style="display:block; text-align:center;">
+          Book This Plan
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     6. SEE US IN ACTION — 3D Carousel
+============================================================ -->
+<section id="gallery" class="grain relative py-24 pb-36" style="background: #0F2B3C; overflow: hidden;">
+
+  <!-- Header -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <h2 class="font-display font-800 text-white uppercase tracking-tighter text-3xl lg:text-4xl mb-3">See the Difference</h2>
+      <p class="font-body text-white/55 text-base leading-[1.7]">Professional window cleaning across Central Massachusetts.</p>
+    </div>
+  </div>
+
+  <!-- Carousel -->
+  <div class="relative z-10">
+    <div class="c-outer" id="ama-carousel">
+      <div class="c-track" id="ama-track">
+
+        <!-- Slide 1 — IMAGE -->
+        <div class="c-slide-wrap">
+          <div class="c-slide c-active" data-idx="0">
+            <div class="c-img-wrap">
+              <img class="c-img" src="brand_assets/window_cleaning_left_image.png" alt="Exterior window cleaning">
+              <div class="c-overlay"></div>
+            </div>
+            <article class="c-content">
+              <h2 class="text-white font-display font-700 text-2xl lg:text-3xl mb-6 leading-tight">Streak-Free,<br/>Every Time</h2>
+              <a href="#quote" class="btn bg-white text-navy font-display font-700 uppercase text-xs px-6 py-3 rounded-2xl hover:bg-ice" style="pointer-events:auto;">Get a Free Quote</a>
+            </article>
+          </div>
+        </div>
+
+        <!-- Slide 2 — VIDEO -->
+        <div class="c-slide-wrap">
+          <div class="c-slide c-inactive" data-idx="1">
+            <div class="c-img-wrap">
+              <video class="c-img" autoplay muted loop playsinline>
+                <source src="brand_assets/IMG_2652.mp4" type="video/mp4">
+              </video>
+              <div class="c-overlay"></div>
+            </div>
+            <article class="c-content">
+              <h2 class="text-white font-display font-700 text-2xl lg:text-3xl mb-6 leading-tight">In Action</h2>
+              <a href="#quote" class="btn bg-white text-navy font-display font-700 uppercase text-xs px-6 py-3 rounded-2xl hover:bg-ice" style="pointer-events:auto;">Get a Free Quote</a>
+            </article>
+          </div>
+        </div>
+
+        <!-- Slide 3 — IMAGE -->
+        <div class="c-slide-wrap">
+          <div class="c-slide c-inactive" data-idx="2">
+            <div class="c-img-wrap">
+              <img class="c-img" src="brand_assets/window_cleaning_right_image.png" alt="Reach every window">
+              <div class="c-overlay"></div>
+            </div>
+            <article class="c-content">
+              <h2 class="text-white font-display font-700 text-2xl lg:text-3xl mb-6 leading-tight">Reach Every<br/>Window</h2>
+              <a href="#quote" class="btn bg-white text-navy font-display font-700 uppercase text-xs px-6 py-3 rounded-2xl hover:bg-ice" style="pointer-events:auto;">Book Today</a>
+            </article>
+          </div>
+        </div>
+
+        <!-- Slide 4 — VIDEO -->
+        <div class="c-slide-wrap">
+          <div class="c-slide c-inactive" data-idx="3">
+            <div class="c-img-wrap">
+              <video class="c-img" autoplay muted loop playsinline>
+                <source src="brand_assets/IMG_2399.mp4" type="video/mp4">
+              </video>
+              <div class="c-overlay"></div>
+            </div>
+            <article class="c-content">
+              <h2 class="text-white font-display font-700 text-2xl lg:text-3xl mb-6 leading-tight">Attention<br/>to Detail</h2>
+              <a href="#quote" class="btn bg-white text-navy font-display font-700 uppercase text-xs px-6 py-3 rounded-2xl hover:bg-ice" style="pointer-events:auto;">Book Today</a>
+            </article>
+          </div>
+        </div>
+
+        <!-- Slide 5 — IMAGE -->
+        <div class="c-slide-wrap">
+          <div class="c-slide c-inactive" data-idx="4">
+            <div class="c-img-wrap">
+              <img class="c-img" src="brand_assets/download.jpg" alt="Interior window cleaning">
+              <div class="c-overlay"></div>
+            </div>
+            <article class="c-content">
+              <h2 class="text-white font-display font-700 text-2xl lg:text-3xl mb-6 leading-tight">Interior Window<br/>Cleaning</h2>
+              <a href="#quote" class="btn bg-white text-navy font-display font-700 uppercase text-xs px-6 py-3 rounded-2xl hover:bg-ice" style="pointer-events:auto;">Get a Free Quote</a>
+            </article>
+          </div>
+        </div>
+
+        <!-- Slide 6 — VIDEO -->
+        <div class="c-slide-wrap">
+          <div class="c-slide c-inactive" data-idx="5">
+            <div class="c-img-wrap">
+              <video class="c-img" autoplay muted loop playsinline>
+                <source src="brand_assets/IMG_2442.mp4" type="video/mp4">
+              </video>
+              <div class="c-overlay"></div>
+            </div>
+            <article class="c-content">
+              <h2 class="text-white font-display font-700 text-2xl lg:text-3xl mb-6 leading-tight">Every<br/>Angle</h2>
+              <a href="#quote" class="btn bg-white text-navy font-display font-700 uppercase text-xs px-6 py-3 rounded-2xl hover:bg-ice" style="pointer-events:auto;">Get a Free Quote</a>
+            </article>
+          </div>
+        </div>
+
+        <!-- Slide 7 — VIDEO -->
+        <div class="c-slide-wrap">
+          <div class="c-slide c-inactive" data-idx="6">
+            <div class="c-img-wrap">
+              <video class="c-img" autoplay muted loop playsinline>
+                <source src="brand_assets/IMG_2594.mp4" type="video/mp4">
+              </video>
+              <div class="c-overlay"></div>
+            </div>
+            <article class="c-content">
+              <h2 class="text-white font-display font-700 text-2xl lg:text-3xl mb-6 leading-tight">Crystal<br/>Clear</h2>
+              <a href="#services" class="btn bg-white text-navy font-display font-700 uppercase text-xs px-6 py-3 rounded-2xl hover:bg-ice" style="pointer-events:auto;">See Our Services</a>
+            </article>
+          </div>
+        </div>
+
+      </div><!-- /c-track -->
+
+      <!-- Nav controls -->
+      <div class="c-nav">
+        <button class="c-nav-btn c-prev" id="ama-prev" aria-label="Previous slide">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="c-nav-btn c-next" id="ama-next" aria-label="Next slide">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     7. CUSTOMER REVIEWS — Marquee
+============================================================ -->
+<section id="reviews" class="py-20 overflow-hidden" style="background: #F5F7FA;">
+
+  <!-- Header — constrained -->
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col items-center gap-3 text-center mb-12">
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#1877F2;">
+          <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <h2 class="font-display font-800 text-navy uppercase tracking-tighter text-3xl lg:text-4xl">What Our Customers Say</h2>
+      </div>
+      <p class="font-body text-textgray text-base leading-[1.7] max-w-xl">Real reviews from real Central Massachusetts homeowners.</p>
+    </div>
+  </div>
+
+  <!-- Marquee — full width -->
+  <div class="marquee-wrapper">
+    <div class="marquee-strip">
+
+      <!-- ===== SET 1 ===== -->
+
+      <!-- 1. Jerry Hastings -->
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Jerry Hastings" class="tcard-avatar">
+          <div>
+            <p class="tcard-name">Jerry Hastings</p>
+            <p class="tcard-handle">@July 2024</p>
+          </div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Austin came to my home in Auburn today to clean the windows in our great room. What an amazing job he did! His cleaning skills combined with his outstanding customer service were top shelf. On a scale of 1 out of 10 he was an 11!"</p>
+        <div class="tcard-footer">
+          <svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span class="tcard-badge">Facebook Review</span>
+        </div>
+      </div>
+
+      <!-- 2. Cindy Ethier -->
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Cindy Ethier" class="tcard-avatar">
+          <div>
+            <p class="tcard-name">Cindy Ethier</p>
+            <p class="tcard-handle">@Verified Customer</p>
+          </div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Outstanding hard working and professional young man who will make your windows sparkle. I have recommended to several friends and neighbors and they have all praised his work."</p>
+        <div class="tcard-footer">
+          <svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span class="tcard-badge">Facebook Review</span>
+        </div>
+      </div>
+
+      <!-- 3. Sue Marchetti -->
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" alt="Sue Marchetti" class="tcard-avatar">
+          <div>
+            <p class="tcard-name">Sue Marchetti</p>
+            <p class="tcard-handle">@April 2025</p>
+          </div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"My windows look amazing! Such a personable, respectful, hardworking young man. I can't recommend Austin enough. If you are hesitant about hiring someone to wash your windows, don't think twice."</p>
+        <div class="tcard-footer">
+          <svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span class="tcard-badge">Facebook Review</span>
+        </div>
+      </div>
+
+      <!-- 4. Michelle Cadrin-Msumba -->
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" alt="Michelle Cadrin-Msumba" class="tcard-avatar">
+          <div>
+            <p class="tcard-name">Michelle Cadrin-Msumba</p>
+            <p class="tcard-handle">@October 2024</p>
+          </div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"We've had Austin back three times now, and each experience has been fantastic. He consistently arrives on time and tackles the job with impressive efficiency. Our windows have never looked better!"</p>
+        <div class="tcard-footer">
+          <svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span class="tcard-badge">Facebook Review</span>
+        </div>
+      </div>
+
+      <!-- 5. Tim Walsh -->
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Tim Walsh" class="tcard-avatar">
+          <div>
+            <p class="tcard-name">Tim Walsh</p>
+            <p class="tcard-handle">@April 2025</p>
+          </div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Austin did a fantastic job. This is the 2nd year we've hired him and he's professional and thorough. Very happy with his work!"</p>
+        <div class="tcard-footer">
+          <svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span class="tcard-badge">Facebook Review</span>
+        </div>
+      </div>
+
+      <!-- 6. Becky Vasalofsky -->
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face" alt="Becky Vasalofsky" class="tcard-avatar">
+          <div>
+            <p class="tcard-name">Becky Vasalofsky</p>
+            <p class="tcard-handle">@July 2024</p>
+          </div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Very happy with my sparkling windows! Austin made them look like new! Price was reasonable and he was prompt, professional, polite, thorough and did fantastic work!"</p>
+        <div class="tcard-footer">
+          <svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span class="tcard-badge">Facebook Review</span>
+        </div>
+      </div>
+
+      <!-- ===== SET 2 (identical — for seamless loop) ===== -->
+
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Jerry Hastings" class="tcard-avatar">
+          <div><p class="tcard-name">Jerry Hastings</p><p class="tcard-handle">@July 2024</p></div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Austin came to my home in Auburn today to clean the windows in our great room. What an amazing job he did! His cleaning skills combined with his outstanding customer service were top shelf. On a scale of 1 out of 10 he was an 11!"</p>
+        <div class="tcard-footer"><svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span class="tcard-badge">Facebook Review</span></div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Cindy Ethier" class="tcard-avatar">
+          <div><p class="tcard-name">Cindy Ethier</p><p class="tcard-handle">@Verified Customer</p></div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Outstanding hard working and professional young man who will make your windows sparkle. I have recommended to several friends and neighbors and they have all praised his work."</p>
+        <div class="tcard-footer"><svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span class="tcard-badge">Facebook Review</span></div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" alt="Sue Marchetti" class="tcard-avatar">
+          <div><p class="tcard-name">Sue Marchetti</p><p class="tcard-handle">@April 2025</p></div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"My windows look amazing! Such a personable, respectful, hardworking young man. I can't recommend Austin enough. If you are hesitant about hiring someone to wash your windows, don't think twice."</p>
+        <div class="tcard-footer"><svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span class="tcard-badge">Facebook Review</span></div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" alt="Michelle Cadrin-Msumba" class="tcard-avatar">
+          <div><p class="tcard-name">Michelle Cadrin-Msumba</p><p class="tcard-handle">@October 2024</p></div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"We've had Austin back three times now, and each experience has been fantastic. He consistently arrives on time and tackles the job with impressive efficiency. Our windows have never looked better!"</p>
+        <div class="tcard-footer"><svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span class="tcard-badge">Facebook Review</span></div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Tim Walsh" class="tcard-avatar">
+          <div><p class="tcard-name">Tim Walsh</p><p class="tcard-handle">@April 2025</p></div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Austin did a fantastic job. This is the 2nd year we've hired him and he's professional and thorough. Very happy with his work!"</p>
+        <div class="tcard-footer"><svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span class="tcard-badge">Facebook Review</span></div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-author">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face" alt="Becky Vasalofsky" class="tcard-avatar">
+          <div><p class="tcard-name">Becky Vasalofsky</p><p class="tcard-handle">@July 2024</p></div>
+        </div>
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"Very happy with my sparkling windows! Austin made them look like new! Price was reasonable and he was prompt, professional, polite, thorough and did fantastic work!"</p>
+        <div class="tcard-footer"><svg width="14" height="14" fill="#1877F2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span class="tcard-badge">Facebook Review</span></div>
+      </div>
+
+    </div><!-- /marquee-strip -->
+
+    <!-- Gradient fade edges -->
+    <div class="tcard-fade-l"></div>
+    <div class="tcard-fade-r"></div>
+  </div><!-- /marquee-wrapper -->
+
+</section>
+
+
+<!-- ============================================================
+     8. SERVICE AREAS
+============================================================ -->
+<section id="areas" class="bg-ice py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="font-display font-800 text-navy uppercase tracking-tighter text-3xl lg:text-4xl mb-3">Window Cleaning Across Central Massachusetts</h2>
+      <p class="font-body text-textgray text-base leading-[1.7]">Serving homeowners throughout the region and surrounding communities.</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Worcester</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Auburn</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Shrewsbury</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Northborough</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Southborough</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Westborough</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Marlborough</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Hudson</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Grafton</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Millbury</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">Holden</p>
+      </div>
+      <div class="town-tile bg-white rounded-xl p-4 text-center" style="box-shadow: 0 2px 12px rgba(15,43,60,0.06);">
+        <svg class="w-5 h-5 mx-auto mb-2" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <p class="font-display font-700 text-navy text-sm">& More</p>
+      </div>
+    </div>
+    <p class="text-center font-body text-textgray/55 text-sm">...and surrounding areas. <a href="#quote" class="underline hover:text-navy transition-[color]" style="color:#50A0D0;">Contact us</a> to confirm your location.</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     9. MID-PAGE CTA FORM
+============================================================ -->
+<section class="grain relative overflow-hidden py-20" style="background: radial-gradient(ellipse at 70% 50%, rgba(80,160,208,0.12) 0%, transparent 55%), #0F2B3C;">
+  <div class="relative z-10 max-w-3xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <h2 class="font-display font-800 text-white uppercase tracking-tighter text-3xl lg:text-4xl mb-3">Get Your Free Quote Today</h2>
+      <p class="font-body text-white/55 text-base leading-[1.7]">Professional, thorough, and always on time. Your windows will look brand new.</p>
+    </div>
+    <div class="bg-white rounded-2xl p-8" style="box-shadow: 0 24px 64px rgba(0,0,0,0.4);">
+      <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-4 quote-form">
+        <input type="hidden" name="access_key" value="affa42ad-4481-4718-a2f5-4ea536b31ab6">
+        <input type="hidden" name="subject" value="New Quote Request — AMA Window Cleaning">
+        <input type="hidden" name="from_name" value="AMA Window Cleaning Website">
+        <input type="checkbox" name="botcheck" style="display:none">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="font-body text-xs font-600 text-navy uppercase tracking-wide mb-1.5 block">Name</label>
+            <input type="text" name="name" placeholder="Your name" required class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-body text-navy" />
+          </div>
+          <div>
+            <label class="font-body text-xs font-600 text-navy uppercase tracking-wide mb-1.5 block">Phone</label>
+            <input type="tel" name="phone" placeholder="(508) 000-0000" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-body text-navy" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="font-body text-xs font-600 text-navy uppercase tracking-wide mb-1.5 block">Email</label>
+            <input type="email" name="email" placeholder="your@email.com" required class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-body text-navy" />
+          </div>
+          <div>
+            <label class="font-body text-xs font-600 text-navy uppercase tracking-wide mb-1.5 block">Service</label>
+            <select name="service" class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm font-body text-navy bg-white">
+              <option value="">Select a service...</option>
+              <option>Interior + Exterior</option>
+              <option>Exterior Only</option>
+              <option>Interior Only</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn w-full bg-blue text-white font-display font-700 uppercase tracking-wide text-sm py-4 rounded-lg hover:bg-sky mt-1" style="display:block; text-align:center;">
+          Request My Free Quote &rarr;
+        </button>
+        <div class="form-msg hidden font-body text-sm text-center py-2 px-4 rounded-lg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     10. FOOTER BANNER
+============================================================ -->
+<section style="background: #5080C0;" class="py-16">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="font-display font-800 text-white uppercase tracking-tighter text-3xl lg:text-4xl mb-3">Ready for Spotless Windows?</h2>
+    <p class="font-body text-white/80 text-base leading-[1.7] mb-8">Professional, thorough, and always on time. See why your neighbors keep coming back.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#quote" class="btn bg-white text-navy font-display font-700 uppercase tracking-wide text-sm px-10 py-4 rounded-lg hover:bg-ice" style="text-align:center;">
+        Get a Free Quote
+      </a>
+      <a href="tel:7744020223" class="btn border-2 border-white text-white font-display font-700 uppercase tracking-wide text-sm px-10 py-4 rounded-lg hover:bg-white/15" style="text-align:center;">
+        (774) 402-0223
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     11. FOOTER
+============================================================ -->
+<footer class="bg-navy py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-10 mb-10">
+
+      <!-- Logo + Tagline -->
+      <div class="md:col-span-1">
+        <div class="bg-white rounded-xl inline-block px-3 py-2 mb-4">
+          <img src="brand_assets/AMAlogo.png" alt="AMA Window Cleaning" class="h-14 w-auto" />
+        </div>
+        <p class="font-body text-white/45 text-sm leading-[1.7]">Making every window sparkle — with professionalism, care, and a personal touch.</p>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="font-display font-700 text-white uppercase tracking-widest text-xs mb-4">Services</h4>
+        <ul class="flex flex-col gap-2.5">
+          <li><a href="#services" class="font-body text-white/45 text-sm hover:text-white transition-[color]">Interior + Exterior Cleaning</a></li>
+          <li><a href="#services" class="font-body text-white/45 text-sm hover:text-white transition-[color]">Exterior Only Cleaning</a></li>
+          <li><a href="#services" class="font-body text-white/45 text-sm hover:text-white transition-[color]">Interior Only Cleaning</a></li>
+          <li><a href="#services" class="font-body text-white/45 text-sm hover:text-white transition-[color]">Screen Cleaning (Add-On)</a></li>
+          <li><a href="#services" class="font-body text-white/45 text-sm hover:text-white transition-[color]">Deep Track &amp; Sill (Add-On)</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="font-display font-700 text-white uppercase tracking-widest text-xs mb-4">Company</h4>
+        <ul class="flex flex-col gap-2.5">
+          <li><a href="#why-ama" class="font-body text-white/45 text-sm hover:text-white transition-[color]">About Austin</a></li>
+          <li><a href="#plans" class="font-body text-white/45 text-sm hover:text-white transition-[color]">Service Plans</a></li>
+          <li><a href="#reviews" class="font-body text-white/45 text-sm hover:text-white transition-[color]">Customer Reviews</a></li>
+          <li><a href="#areas" class="font-body text-white/45 text-sm hover:text-white transition-[color]">Service Areas</a></li>
+          <li><a href="#quote" class="font-body text-white/45 text-sm hover:text-white transition-[color]">Get a Quote</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact & Hours -->
+      <div>
+        <h4 class="font-display font-700 text-white uppercase tracking-widest text-xs mb-4">Contact &amp; Hours</h4>
+        <ul class="flex flex-col gap-3">
+          <li class="flex items-center gap-2.5 font-body text-white/45 text-sm">
+            <svg class="w-4 h-4 flex-shrink-0" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            (774) 402-0223
+          </li>
+          <li class="flex items-center gap-2.5 font-body text-white/45 text-sm">
+            <svg class="w-4 h-4 flex-shrink-0" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            <a href="mailto:amawindowcleaning@gmail.com" class="hover:text-white transition-[color]">amawindowcleaning@gmail.com</a>
+          </li>
+          <li class="flex items-center gap-2.5 font-body text-white/45 text-sm">
+            <svg class="w-4 h-4 flex-shrink-0" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Central Massachusetts
+          </li>
+          <li class="font-body text-white/45 text-sm leading-[1.7] mt-1" style="padding-left: 1.6rem;">
+            Mon&ndash;Fri: 8am&ndash;6pm<br/>Sat: 9am&ndash;3pm<br/>Sun: Closed
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-4" style="border-color: rgba(255,255,255,0.1);">
+      <p class="font-body text-white/30 text-xs">&copy; 2025 AMA Window Cleaning. All rights reserved.</p>
+      <p class="font-body text-white/30 text-xs">Serving Central Massachusetts with pride.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+  }
+
+  // === 3D Image Carousel ===
+  (function() {
+    const track = document.getElementById('ama-track');
+    if (!track) return;
+    const slides = Array.from(track.querySelectorAll('.c-slide'));
+    const total = slides.length;
+    let current = 0;
+
+    function goTo(idx) {
+      // Remove active from current
+      slides[current].classList.replace('c-active', 'c-inactive');
+      const prevWrap = slides[current].querySelector('.c-img-wrap');
+      if (prevWrap) prevWrap.style.transform = 'translate3d(0,0,0)';
+      // Set new current
+      current = ((idx % total) + total) % total;
+      slides[current].classList.replace('c-inactive', 'c-active');
+      track.style.transform = 'translateX(calc(-' + current + ' * (70vmin + 8vmin)))';
+    }
+
+    document.getElementById('ama-prev').addEventListener('click', function() { goTo(current - 1); });
+    document.getElementById('ama-next').addEventListener('click', function() { goTo(current + 1); });
+
+    slides.forEach(function(slide, i) {
+      // Click non-active slide to jump to it
+      slide.addEventListener('click', function() {
+        if (i !== current) goTo(i);
+      });
+      // Mouse parallax on active slide
+      slide.addEventListener('mousemove', function(e) {
+        if (i !== current) return;
+        var wrap = slide.querySelector('.c-img-wrap');
+        if (!wrap) return;
+        var r = slide.getBoundingClientRect();
+        var x = e.clientX - (r.left + r.width / 2);
+        var y = e.clientY - (r.top + r.height / 2);
+        wrap.style.transform = 'translate3d(' + (x / 30) + 'px,' + (y / 30) + 'px,0)';
+      });
+      slide.addEventListener('mouseleave', function() {
+        if (i !== current) return;
+        var wrap = slide.querySelector('.c-img-wrap');
+        if (wrap) wrap.style.transform = 'translate3d(0,0,0)';
+      });
+    });
+  })();
+</script>
+
+<script>
+  // Quote form submission handler
+  document.querySelectorAll('.quote-form').forEach(function(form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var msg = form.querySelector('.form-msg');
+      var originalText = btn.textContent;
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        var res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form)
+        });
+        var data = await res.json();
+        if (data.success) {
+          msg.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+          msg.classList.add('bg-green-100', 'text-green-700');
+          msg.textContent = "Thanks! We'll be in touch within 24 hours.";
+          form.reset();
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      } catch (err) {
+        msg.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+        msg.classList.add('bg-red-100', 'text-red-700');
+        msg.textContent = 'Something went wrong. Please call us at (774) 402-0223.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

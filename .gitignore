@@ -6,3 +6,9 @@ dist/
 
 # Dependencies
 node_modules/
+
+# Separate git repos (managed independently)
+VeronisMobileDetailing/
+
+# Temp
+temporary screenshots/
