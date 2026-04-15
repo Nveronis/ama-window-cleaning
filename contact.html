@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Free Quote — Archscape Lawn Care & Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0d3b6e', dark: '#082a52', deep: '#051e3a', light: '#1a5a9e', muted: '#1e4d7b' },
+            green: { DEFAULT: '#8dc63f', dark: '#6fa030', deep: '#527820', light: '#a8dc5a', pale: '#d4f0a0' }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
+    .grain-overlay { position: absolute; inset: 0; pointer-events: none; z-index: 1; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); background-size: 256px; }
+    .nav-link { position: relative; transition: color 0.2s ease; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: #8dc63f; transform: scaleX(0); transform-origin: left; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .nav-link:hover, .nav-link.active { color: #8dc63f; }
+    .cta-btn { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, opacity 0.2s ease; }
+    .cta-btn:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(141,198,63,0.4); }
+    .cta-btn:active { transform: scale(0.98); opacity: 0.9; }
+    .cta-btn:focus-visible { outline: 3px solid #a8dc5a; outline-offset: 3px; }
+    .contact-link { transition: color 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .contact-link:hover { color: #8dc63f; transform: translateX(4px); }
+    .contact-link:focus-visible { outline: 2px solid #8dc63f; outline-offset: 2px; border-radius: 4px; }
+    .form-input { transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+    .form-input:focus { outline: none; border-color: #8dc63f; box-shadow: 0 0 0 3px rgba(141,198,63,0.15); }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .mobile-menu { transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .mobile-menu.hidden-menu { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+    .mobile-menu.shown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  </style>
+</head>
+<body class="bg-navy-deep text-white overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-navy-deep/95 backdrop-blur-md border-b border-navy-light/20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center group">
+          <div class="w-11 h-11 rounded-full overflow-hidden flex-shrink-0" >
+            <img src="brand_assets/photos/Archscape-Logo-circle-small.jpeg" alt="Archscape" class="w-full h-full object-cover scale-110"/>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link font-body text-sm font-medium text-white/80 tracking-wide">Home</a>
+          <a href="about.html" class="nav-link font-body text-sm font-medium text-white/80 tracking-wide">About</a>
+          <a href="services.html" class="nav-link font-body text-sm font-medium text-white/80 tracking-wide">Services</a>
+          <a href="christmas-lights.html" class="nav-link font-body text-sm font-medium text-white/80 tracking-wide">Christmas Lights</a>
+          <a href="contact.html" class="nav-link active font-body text-sm font-medium text-white tracking-wide">Contact</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="tel:9789417030" class="cta-btn hidden sm:inline-flex items-center gap-2 bg-green text-navy-deep font-body font-semibold text-sm px-5 py-2.5 rounded-full">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call Today
+          </a>
+          <button id="menu-btn" class="md:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-navy-light/30 transition-[background,color] duration-200 focus-visible:outline-2 focus-visible:outline-green">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu hidden-menu md:hidden bg-navy-dark/98 border-t border-navy-light/20 px-6 py-4 space-y-1">
+      <a href="index.html" class="block py-2.5 text-white/80 hover:text-green font-body font-medium text-sm tracking-wide transition-[color] duration-200">Home</a>
+      <a href="about.html" class="block py-2.5 text-white/80 hover:text-green font-body font-medium text-sm tracking-wide transition-[color] duration-200">About</a>
+      <a href="services.html" class="block py-2.5 text-white/80 hover:text-green font-body font-medium text-sm tracking-wide transition-[color] duration-200">Services</a>
+      <a href="christmas-lights.html" class="block py-2.5 text-white/80 hover:text-green font-body font-medium text-sm tracking-wide transition-[color] duration-200">Christmas Lights</a>
+      <a href="contact.html" class="block py-2.5 text-green font-body font-medium text-sm tracking-wide">Contact</a>
+      <a href="tel:9789417030" class="mt-3 flex items-center gap-2 bg-green text-navy-deep font-semibold text-sm px-4 py-2.5 rounded-full w-fit">978-941-7030</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-navy-dark"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(141,198,63,0.1) 0%, transparent 60%), radial-gradient(ellipse 50% 80% at 10% 60%, rgba(26,90,158,0.3) 0%, transparent 55%);"></div>
+    <div class="grain-overlay"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center gap-10">
+        <!-- Text -->
+        <div class="flex-1 fade-in">
+          <div class="inline-block bg-green/15 border border-green/30 rounded-full px-3 py-1 mb-5">
+            <span class="font-body text-green text-xs font-semibold tracking-[0.12em] uppercase">Free Estimate</span>
+          </div>
+          <h1 class="font-display font-black text-4xl md:text-6xl text-white tracking-[-0.03em] leading-[0.95] mb-5">
+            Get In Touch<br/><span class="text-green">with Archscape</span>
+          </h1>
+          <p class="font-body text-white/65 text-lg leading-[1.7]">
+            Ready to transform your property? Fill out the form below or reach out directly — we'll get back to you quickly with a free, no-obligation estimate.
+          </p>
+        </div>
+        <!-- Logo right -->
+        <div class="flex-shrink-0 fade-in" style="transition-delay:0.1s;">
+          <div class="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden">
+            <img src="brand_assets/photos/Archscape-Logo-circle-small.jpeg" alt="Archscape" class="w-full h-full object-cover scale-110"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT + FORM -->
+  <section class="py-16 md:py-24 bg-navy-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+
+        <!-- Contact Info -->
+        <div class="lg:col-span-2 fade-in">
+          <h2 class="font-display font-bold text-2xl text-white tracking-[-0.02em] mb-8">Contact Information</h2>
+
+          <!-- Phone -->
+          <div class="flex items-start gap-4 mb-7">
+            <div class="w-11 h-11 bg-green/15 border border-green/30 rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow: 0 4px 16px rgba(141,198,63,0.1);">
+              <svg class="w-5 h-5 text-green" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            </div>
+            <div>
+              <div class="font-body text-white/40 text-xs font-medium tracking-wide mb-1 uppercase">Phone</div>
+              <a href="tel:9789417030" class="contact-link font-display font-semibold text-white text-xl">978-941-7030</a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-start gap-4 mb-7">
+            <div class="w-11 h-11 bg-green/15 border border-green/30 rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow: 0 4px 16px rgba(141,198,63,0.1);">
+              <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="font-body text-white/40 text-xs font-medium tracking-wide mb-1 uppercase">Email</div>
+              <a href="mailto:archscapelcands@gmail.com" class="contact-link font-body text-white text-sm break-all">archscapelcands@gmail.com</a>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="flex items-start gap-4 mb-7">
+            <div class="w-11 h-11 bg-green/15 border border-green/30 rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow: 0 4px 16px rgba(141,198,63,0.1);">
+              <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <div class="font-body text-white/40 text-xs font-medium tracking-wide mb-1 uppercase">Service Area</div>
+              <p class="font-body text-white text-sm leading-[1.6]">Proudly serving Andover<br/>and the surrounding area</p>
+            </div>
+          </div>
+
+          <!-- Credentials -->
+          <div class="flex items-start gap-4 mb-10">
+            <div class="w-11 h-11 bg-green/15 border border-green/30 rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow: 0 4px 16px rgba(141,198,63,0.1);">
+              <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <div>
+              <div class="font-body text-white/40 text-xs font-medium tracking-wide mb-1 uppercase">Credentials</div>
+              <p class="font-body text-white text-sm leading-[1.6]">Since 2021 · Fully Licensed<br/>and Insured</p>
+            </div>
+          </div>
+
+          <!-- Services list -->
+          <div class="bg-navy/60 border border-navy-light/20 rounded-2xl p-6" style="box-shadow: 0 8px 32px rgba(13,59,110,0.35), 0 2px 8px rgba(0,0,0,0.25);">
+            <h3 class="font-display font-semibold text-white text-sm mb-4">Services We Offer</h3>
+            <ul class="space-y-2.5">
+              <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="font-body text-white/60 text-xs">Hardscape</span></li>
+              <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="font-body text-white/60 text-xs">Landscaping</span></li>
+              <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="font-body text-white/60 text-xs">Lawn Care & Maintenance</span></li>
+              <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="font-body text-white/60 text-xs">Irrigation Services</span></li>
+              <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="font-body text-white/60 text-xs">Winter Snow & Ice</span></li>
+              <li class="flex items-center gap-2.5"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="font-body text-white/60 text-xs">Christmas Light Installation</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="lg:col-span-3 fade-in" style="transition-delay: 0.15s;">
+          <div class="bg-navy/60 border border-navy-light/20 rounded-2xl p-8 md:p-10" style="box-shadow: 0 16px 48px rgba(13,59,110,0.4), 0 4px 16px rgba(0,0,0,0.3);">
+            <h2 class="font-display font-bold text-2xl text-white tracking-[-0.02em] mb-2">Request a Free Quote</h2>
+            <p class="font-body text-white/50 text-sm leading-[1.6] mb-8">Fill out the form below and we'll be in touch shortly. No obligation, ever.</p>
+
+            <form action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="{{WEB3FORMS_KEY}}" />
+              <input type="hidden" name="subject" value="New Quote Request — Archscape Lawn Care & Service" />
+
+              <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label class="block font-body text-white/70 text-xs font-medium tracking-wide mb-2">First Name <span class="text-green">*</span></label>
+                  <input type="text" name="first_name" required placeholder="John" class="form-input w-full bg-navy-dark/60 border border-navy-light/30 rounded-xl px-4 py-3 font-body text-white text-sm placeholder-white/25"/>
+                </div>
+                <div>
+                  <label class="block font-body text-white/70 text-xs font-medium tracking-wide mb-2">Last Name <span class="text-green">*</span></label>
+                  <input type="text" name="last_name" required placeholder="Smith" class="form-input w-full bg-navy-dark/60 border border-navy-light/30 rounded-xl px-4 py-3 font-body text-white text-sm placeholder-white/25"/>
+                </div>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label class="block font-body text-white/70 text-xs font-medium tracking-wide mb-2">Email <span class="text-green">*</span></label>
+                  <input type="email" name="email" required placeholder="john@example.com" class="form-input w-full bg-navy-dark/60 border border-navy-light/30 rounded-xl px-4 py-3 font-body text-white text-sm placeholder-white/25"/>
+                </div>
+                <div>
+                  <label class="block font-body text-white/70 text-xs font-medium tracking-wide mb-2">Phone</label>
+                  <input type="tel" name="phone" placeholder="(978) 000-0000" class="form-input w-full bg-navy-dark/60 border border-navy-light/30 rounded-xl px-4 py-3 font-body text-white text-sm placeholder-white/25"/>
+                </div>
+              </div>
+              <div class="mb-5">
+                <label class="block font-body text-white/70 text-xs font-medium tracking-wide mb-2">City</label>
+                <input type="text" name="city" placeholder="Andover" class="form-input w-full bg-navy-dark/60 border border-navy-light/30 rounded-xl px-4 py-3 font-body text-white text-sm placeholder-white/25"/>
+              </div>
+              <div class="mb-5">
+                <label class="block font-body text-white/70 text-xs font-medium tracking-wide mb-2">Service Interested In</label>
+                <select name="service" class="form-input w-full bg-navy-dark/60 border border-navy-light/30 rounded-xl px-4 py-3 font-body text-white text-sm appearance-none" style="color: rgba(255,255,255,0.7);">
+                  <option value="" style="background:#082a52;">Select a service...</option>
+                  <option value="hardscape" style="background:#082a52;">Hardscape</option>
+                  <option value="landscaping" style="background:#082a52;">Landscaping</option>
+                  <option value="lawn-care" style="background:#082a52;">Lawn Care & Maintenance</option>
+                  <option value="irrigation" style="background:#082a52;">Irrigation Services</option>
+                  <option value="snow" style="background:#082a52;">Winter Snow & Ice</option>
+                  <option value="christmas-lights" style="background:#082a52;">Christmas Light Installation</option>
+                  <option value="multiple" style="background:#082a52;">Multiple Services</option>
+                </select>
+              </div>
+              <div class="mb-7">
+                <label class="block font-body text-white/70 text-xs font-medium tracking-wide mb-2">Message</label>
+                <textarea name="message" rows="5" placeholder="Tell us about your project and what you're envisioning..." class="form-input w-full bg-navy-dark/60 border border-navy-light/30 rounded-xl px-4 py-3 font-body text-white text-sm placeholder-white/25 resize-none"></textarea>
+              </div>
+              <button type="submit" class="cta-btn w-full bg-green text-navy-deep font-body font-bold text-sm py-4 rounded-xl">
+                Submit Request
+              </button>
+              <p class="font-body text-white/30 text-xs text-center mt-4">We'll respond within 24 hours. No spam, ever.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA STRIP -->
+  <section class="relative py-14 bg-navy overflow-hidden">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(26,90,158,0.2) 0%, transparent 70%);"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center fade-in">
+      <div class="inline-flex items-center gap-3 bg-navy-dark/60 border border-navy-light/20 rounded-2xl px-8 py-5" style="box-shadow: 0 8px 32px rgba(13,59,110,0.35);">
+        <svg class="w-5 h-5 text-green flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span class="font-body text-white/70 text-sm">Proudly serving <span class="text-white font-semibold">Andover and the surrounding area</span> since 2021</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy-deep border-t border-navy-light/15 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <div class="mb-5">
+            <img src="brand_assets/photos/Archscape-Logo-centered+text.jpeg" alt="Archscape Lawn Care & Service" class="h-16 w-auto object-contain" />
+          </div>
+          <p class="font-body text-white/50 text-sm leading-[1.7] mb-5">Professional landscaping, hardscaping, and outdoor services for Andover and surrounding communities.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 bg-navy-light/30 rounded-full flex items-center justify-center hover:bg-green/20 transition-[background] duration-200 focus-visible:outline-2 focus-visible:outline-green" aria-label="Facebook"><svg class="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="#" class="w-9 h-9 bg-navy-light/30 rounded-full flex items-center justify-center hover:bg-green/20 transition-[background] duration-200 focus-visible:outline-2 focus-visible:outline-green" aria-label="Instagram"><svg class="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-display font-semibold text-white text-sm tracking-wide mb-5">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">Home</a></li>
+            <li><a href="about.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">About</a></li>
+            <li><a href="services.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">Services</a></li>
+            <li><a href="christmas-lights.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">Christmas Lights</a></li>
+            <li><a href="contact.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">Contact & Quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-semibold text-white text-sm tracking-wide mb-5">Get In Touch</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3"><svg class="w-4 h-4 text-green mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg><a href="tel:9789417030" class="font-body text-white/60 text-sm hover:text-green transition-[color] duration-200">978-941-7030</a></li>
+            <li class="flex items-start gap-3"><svg class="w-4 h-4 text-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:archscapelcands@gmail.com" class="font-body text-white/60 text-sm hover:text-green transition-[color] duration-200">archscapelcands@gmail.com</a></li>
+            <li class="flex items-start gap-3"><svg class="w-4 h-4 text-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span class="font-body text-white/60 text-sm">Proudly serving Andover<br/>and the surrounding area</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-navy-light/15 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-body text-white/30 text-xs">© 2024 Archscape Lawn Care & Service. Est. 2021. Fully Licensed & Insured.</p>
+        <p class="font-body text-white/20 text-xs">Andover, MA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    let open = false;
+    btn.addEventListener('click', () => { open = !open; menu.classList.toggle('hidden-menu', !open); menu.classList.toggle('shown-menu', open); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px 9999px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
