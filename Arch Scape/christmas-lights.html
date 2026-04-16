@@ -49,9 +49,9 @@
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     .form-input { transition: border-color 0.2s ease, box-shadow 0.2s ease; }
     .form-input:focus { outline: none; border-color: #8dc63f; box-shadow: 0 0 0 3px rgba(141,198,63,0.15); }
-    .mobile-menu { transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .mobile-menu.hidden-menu { opacity: 0; transform: translateY(-8px); pointer-events: none; }
-    .mobile-menu.shown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .mobile-menu { transition: max-height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease; overflow: hidden; }
+    .mobile-menu.hidden-menu { max-height: 0; opacity: 0; pointer-events: none; padding-top: 0; padding-bottom: 0; }
+    .mobile-menu.shown-menu { max-height: 400px; opacity: 1; pointer-events: auto; }
     @keyframes callPulse {
       0% { transform: scale(1); opacity: 0.6; }
       70% { transform: scale(1.35); opacity: 0; }
@@ -136,7 +136,7 @@
   <section class="py-20 md:py-28" style="background-color: #034F89;">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex justify-center mb-10 fade-in">
-        <img src="brand_assets/photos/IMG_8913.jpeg" alt="Archscape Christmas Light Installation" class="h-auto object-contain" style="width: 380px; transform: scaleX(1.18);" />
+        <img src="brand_assets/photos/IMG_8913.jpeg" alt="Archscape Christmas Light Installation" class="h-auto object-contain" style="width: 380px;" />
       </div>
       <div class="text-center mb-10 fade-in">
         <p class="font-body text-white/55 text-base max-w-md mx-auto leading-[1.7]">From design to storage, we handle every step so you can enjoy the magic stress-free.</p>
@@ -207,7 +207,7 @@
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div class="group relative rounded-2xl overflow-hidden aspect-[4/3] fade-in" style="transition-delay:0s;">
-          <img src="brand_assets/photos/IMG_1642.jpeg" alt="Christmas light display" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <img src="brand_assets/photos/IMG_8260.jpeg" alt="Christmas light display" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
           <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(5,30,58,0.6) 0%, transparent 60%);"></div>
           <div class="absolute inset-0 bg-green/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
@@ -252,9 +252,9 @@
 
       <div class="bg-navy/60 border border-navy-light/20 rounded-2xl p-8 md:p-10 fade-in" style="box-shadow: 0 16px 48px rgba(13,59,110,0.4), 0 4px 16px rgba(0,0,0,0.3);">
         <form action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="{{WEB3FORMS_KEY}}" />
+          <input type="hidden" name="access_key" value="10ed3329-0e30-433d-b202-de5ade6cd2ca" />
           <input type="hidden" name="subject" value="New Christmas Lights Quote Request — Archscape" />
-          <input type="hidden" name="redirect" value="" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none;" />
 
           <!-- Property Type Selector -->
           <div class="mb-6">
