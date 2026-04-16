@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services — Archscape Lawn Care & Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0d3b6e', dark: '#082a52', deep: '#051e3a', light: '#1a5a9e', muted: '#1e4d7b' },
+            green: { DEFAULT: '#8dc63f', dark: '#6fa030', deep: '#527820', light: '#a8dc5a', pale: '#d4f0a0' }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
+    .grain-overlay { position: absolute; inset: 0; pointer-events: none; z-index: 1; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); background-size: 256px; }
+    .nav-link { position: relative; transition: color 0.2s ease; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: #8dc63f; transform: scaleX(0); transform-origin: left; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .nav-link:hover, .nav-link.active { color: #8dc63f; }
+    .service-card { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(13,59,110,0.5), 0 4px 16px rgba(0,0,0,0.3); }
+    .cta-btn { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, opacity 0.2s ease; }
+    .cta-btn:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(141,198,63,0.4); }
+    .cta-btn:active { transform: scale(0.98); opacity: 0.9; }
+    .cta-btn:focus-visible { outline: 3px solid #a8dc5a; outline-offset: 3px; }
+    .outline-btn { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease; }
+    .outline-btn:hover { transform: scale(1.04); background: rgba(141,198,63,0.12); }
+    .outline-btn:active { transform: scale(0.98); }
+    .outline-btn:focus-visible { outline: 3px solid #a8dc5a; outline-offset: 3px; }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .mobile-menu { transition: max-height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease; overflow: hidden; }
+    .mobile-menu.hidden-menu { max-height: 0; opacity: 0; pointer-events: none; padding-top: 0; padding-bottom: 0; }
+    .mobile-menu.shown-menu { max-height: 400px; opacity: 1; pointer-events: auto; }
+  </style>
+</head>
+<body class="bg-navy-deep text-white overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-navy-deep/95 backdrop-blur-md border-b border-navy-light/20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center group">
+          <div class="w-11 h-11 rounded-full overflow-hidden flex-shrink-0" >
+            <img src="brand_assets/photos/Archscape-Logo-circle-small.jpeg" alt="Archscape" class="w-full h-full object-cover scale-110"/>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="nav-link font-body text-sm font-medium text-white/80 tracking-wide">Home</a>
+          <a href="about.html" class="nav-link font-body text-sm font-medium text-white/80 tracking-wide">About</a>
+          <a href="services.html" class="nav-link active font-body text-sm font-medium text-white tracking-wide">Services</a>
+          <a href="christmas-lights.html" class="nav-link font-body text-sm font-medium text-white/80 tracking-wide">Christmas Lights</a>
+          <a href="contact.html" class="nav-link font-body text-sm font-medium text-white/80 tracking-wide">Contact</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="tel:9789417030" class="cta-btn hidden sm:inline-flex items-center gap-2 bg-green text-navy-deep font-body font-semibold text-sm px-5 py-2.5 rounded-full">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            Call Today
+          </a>
+          <button id="menu-btn" class="md:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-navy-light/30 transition-[background,color] duration-200 focus-visible:outline-2 focus-visible:outline-green">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu hidden-menu md:hidden bg-navy-dark/98 border-t border-navy-light/20 px-6 py-4 space-y-1">
+      <a href="index.html" class="block py-2.5 text-white/80 hover:text-green font-body font-medium text-sm tracking-wide transition-[color] duration-200">Home</a>
+      <a href="about.html" class="block py-2.5 text-white/80 hover:text-green font-body font-medium text-sm tracking-wide transition-[color] duration-200">About</a>
+      <a href="services.html" class="block py-2.5 text-green font-body font-medium text-sm tracking-wide">Services</a>
+      <a href="christmas-lights.html" class="block py-2.5 text-white/80 hover:text-green font-body font-medium text-sm tracking-wide transition-[color] duration-200">Christmas Lights</a>
+      <a href="contact.html" class="block py-2.5 text-white/80 hover:text-green font-body font-medium text-sm tracking-wide transition-[color] duration-200">Contact</a>
+      <a href="tel:9789417030" class="mt-3 flex items-center gap-2 bg-green text-navy-deep font-semibold text-sm px-4 py-2.5 rounded-full w-fit">978-941-7030</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-navy-dark"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(141,198,63,0.1) 0%, transparent 60%), radial-gradient(ellipse 50% 80% at 10% 60%, rgba(26,90,158,0.3) 0%, transparent 55%);"></div>
+    <div class="grain-overlay"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center gap-10">
+        <!-- Text -->
+        <div class="flex-1 fade-in">
+          <div class="inline-block bg-green/15 border border-green/30 rounded-full px-3 py-1 mb-5">
+            <span class="font-body text-green text-xs font-semibold tracking-[0.12em] uppercase">What We Offer</span>
+          </div>
+          <h1 class="font-display font-black text-4xl md:text-6xl text-white tracking-[-0.03em] leading-[0.95] mb-5">Our Services</h1>
+          <p class="font-body text-white/65 text-lg leading-[1.7] max-w-xl">
+            At Archscape, we specialize in creating beautiful landscapes for residential and commercial properties. Whether you need lawn care, hardscaping, or holiday lighting, our team has the expertise to bring your vision to life.
+          </p>
+        </div>
+        <!-- Logo right -->
+        <div class="flex-shrink-0 fade-in" style="transition-delay:0.1s;">
+          <div class="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden" >
+            <img src="brand_assets/photos/Archscape-Logo-circle-small.jpeg" alt="Archscape" class="w-full h-full object-cover scale-110"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="py-16 md:py-24 bg-navy-deep">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Hardscape -->
+        <div id="hardscape" class="service-card group bg-navy/60 border border-navy-light/20 rounded-2xl overflow-hidden fade-in" style="box-shadow: 0 8px 32px rgba(13,59,110,0.35), 0 2px 8px rgba(0,0,0,0.25);">
+          <div class="relative h-56 overflow-hidden">
+            <img src="brand_assets/photos/89DDB743-175A-4E9F-A373-95CDE6F4B6EA.jpeg" alt="Hardscape" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(8,42,82,0.9) 0%, rgba(8,42,82,0.3) 50%, transparent 100%);"></div>
+            <div class="absolute inset-0 bg-green/10 mix-blend-multiply"></div>
+            <div class="absolute bottom-4 left-6">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 bg-green/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5 text-green" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+                </div>
+                <h2 class="font-display font-bold text-xl text-white">Hardscape</h2>
+              </div>
+            </div>
+          </div>
+          <div class="p-7">
+            <p class="font-body text-white/65 text-sm leading-[1.8] mb-5">
+              At Archscape, we specialize in creating exceptional patios, walkways, driveways, and retaining walls to fulfill your outdoor aspirations. We offer a range of custom hardscape solutions crafted from premium materials — from natural stone and brick to concrete pavers. Every project is designed to complement your home's architecture and stand the test of time.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Custom patios & outdoor living areas</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Walkways, driveways & retaining walls</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Natural stone, brick, and pavers</li>
+            </ul>
+            <a href="contact.html" class="cta-btn inline-flex items-center gap-2 bg-green text-navy-deep font-body font-bold text-xs px-5 py-2.5 rounded-full">Get a Quote <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Landscaping -->
+        <div id="landscaping" class="service-card group bg-navy/60 border border-navy-light/20 rounded-2xl overflow-hidden fade-in" style="box-shadow: 0 8px 32px rgba(13,59,110,0.35), 0 2px 8px rgba(0,0,0,0.25); transition-delay:0.1s;">
+          <div class="relative h-56 overflow-hidden">
+            <img src="brand_assets/photos/IMG_5232.jpeg" alt="Landscaping" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(8,42,82,0.9) 0%, rgba(8,42,82,0.3) 50%, transparent 100%);"></div>
+            <div class="absolute inset-0 bg-green/10 mix-blend-multiply"></div>
+            <div class="absolute bottom-4 left-6">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 bg-green/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                </div>
+                <h2 class="font-display font-bold text-xl text-white">Landscaping</h2>
+              </div>
+            </div>
+          </div>
+          <div class="p-7">
+            <p class="font-body text-white/65 text-sm leading-[1.8] mb-5">
+              We specialize in comprehensive landscaping services designed to enhance your outdoor space. Our offerings include mulch and decorative rock installations, shrub and plant installations, loam grading, sod and seeding, and full landscape design and renovation projects. We make every yard uniquely yours.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Mulch, rock & plant installations</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Loam grading, sod & seeding</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Full landscape design & renovation</li>
+            </ul>
+            <a href="contact.html" class="cta-btn inline-flex items-center gap-2 bg-green text-navy-deep font-body font-bold text-xs px-5 py-2.5 rounded-full">Get a Quote <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Lawn Care -->
+        <div id="lawncare" class="service-card group bg-navy/60 border border-navy-light/20 rounded-2xl overflow-hidden fade-in" style="box-shadow: 0 8px 32px rgba(13,59,110,0.35), 0 2px 8px rgba(0,0,0,0.25); transition-delay:0.15s;">
+          <div class="relative h-56 overflow-hidden">
+            <img src="brand_assets/photos/E2E1751C-7533-436A-B128-319B219A61E3IMG_4835.jpeg" alt="Lawn Maintenance" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(8,42,82,0.9) 0%, rgba(8,42,82,0.3) 50%, transparent 100%);"></div>
+            <div class="absolute inset-0 bg-green/10 mix-blend-multiply"></div>
+            <div class="absolute bottom-4 left-6">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 bg-green/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                </div>
+                <h2 class="font-display font-bold text-xl text-white">Lawn Maintenance</h2>
+              </div>
+            </div>
+          </div>
+          <div class="p-7">
+            <p class="font-body text-white/65 text-sm leading-[1.8] mb-5">
+              Elevate your outdoor spaces with our lawn care services, designed to ensure your landscape remains immaculate and healthy all season long. From spring clean-ups that shake off winter to fall clean-ups that prepare your lawn for next year, our team keeps your property looking its best year-round.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Spring & fall clean-ups</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Mowing, de-thatching & aeration</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Edging, trimming & overseeding</li>
+            </ul>
+            <a href="contact.html" class="cta-btn inline-flex items-center gap-2 bg-green text-navy-deep font-body font-bold text-xs px-5 py-2.5 rounded-full">Get a Quote <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Irrigation -->
+        <div id="irrigation" class="service-card group bg-navy/60 border border-navy-light/20 rounded-2xl overflow-hidden fade-in" style="box-shadow: 0 8px 32px rgba(13,59,110,0.35), 0 2px 8px rgba(0,0,0,0.25); transition-delay:0.2s;">
+          <div class="relative h-56 overflow-hidden">
+            <img src="brand_assets/photos/IMG_8901.JPEG" alt="Irrigation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(8,42,82,0.9) 0%, rgba(8,42,82,0.3) 50%, transparent 100%);"></div>
+            <div class="absolute inset-0 bg-green/10 mix-blend-multiply"></div>
+            <div class="absolute bottom-4 left-6">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 bg-green/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3"/></svg>
+                </div>
+                <h2 class="font-display font-bold text-xl text-white">Irrigation Services</h2>
+              </div>
+            </div>
+          </div>
+          <div class="p-7">
+            <p class="font-body text-white/65 text-sm leading-[1.8] mb-5">
+              We've got all your irrigation needs covered, from spring start-ups to winterizations and repairs. Whether you need a new sprinkler system or want your current one to run more efficiently, our team will ensure your lawn and garden get the precise water they need, right when they need it.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Spring start-ups & winterizations</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>New system installation</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Repairs & system optimization</li>
+            </ul>
+            <a href="contact.html" class="cta-btn inline-flex items-center gap-2 bg-green text-navy-deep font-body font-bold text-xs px-5 py-2.5 rounded-full">Get a Quote <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Snow -->
+        <div id="snow" class="service-card group bg-navy/60 border border-navy-light/20 rounded-2xl overflow-hidden fade-in" style="box-shadow: 0 8px 32px rgba(13,59,110,0.35), 0 2px 8px rgba(0,0,0,0.25); transition-delay:0.25s;">
+          <div class="relative h-56 overflow-hidden">
+            <img src="brand_assets/photos/IMG_8900.JPEG" alt="Snow Removal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(8,42,82,0.9) 0%, rgba(8,42,82,0.3) 50%, transparent 100%);"></div>
+            <div class="absolute inset-0 bg-green/10 mix-blend-multiply"></div>
+            <div class="absolute bottom-4 left-6">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 bg-green/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                </div>
+                <h2 class="font-display font-bold text-xl text-white">Winter Snow & Ice</h2>
+              </div>
+            </div>
+          </div>
+          <div class="p-7">
+            <p class="font-body text-white/65 text-sm leading-[1.8] mb-5">
+              We offer reliable snow and ice management for the entire winter for homes and businesses throughout Andover and the surrounding area. Snow plowing and shoveling for driveways, parking lots, walkways, and more — keeping your property safe and accessible all winter long.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Residential & commercial plowing</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Walkways & steps shoveling</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ice management & salting</li>
+            </ul>
+            <a href="contact.html" class="cta-btn inline-flex items-center gap-2 bg-green text-navy-deep font-body font-bold text-xs px-5 py-2.5 rounded-full">Get a Quote <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Christmas Lights -->
+        <div class="service-card group bg-navy/60 border border-green/30 rounded-2xl overflow-hidden fade-in" style="box-shadow: 0 8px 32px rgba(141,198,63,0.15), 0 2px 8px rgba(0,0,0,0.25); transition-delay:0.3s;">
+          <div class="relative h-56 overflow-hidden">
+            <img src="brand_assets/photos/IMG_8311.jpeg" alt="Christmas Lights" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(8,42,82,0.9) 0%, rgba(8,42,82,0.3) 50%, transparent 100%);"></div>
+            <div class="absolute inset-0 bg-green/15 mix-blend-multiply"></div>
+            <div class="absolute bottom-4 left-6">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 bg-green/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5 text-green" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.298.057-.59.123-.877a7 7 0 10-4.246 0c.066.287.108.579.123.877h4z"/></svg>
+                </div>
+                <h2 class="font-display font-bold text-xl text-white">Christmas Lights</h2>
+              </div>
+            </div>
+          </div>
+          <div class="p-7">
+            <p class="font-body text-white/65 text-sm leading-[1.8] mb-5">
+              At Archscape, we're here to make your holiday lighting dreams come true! We offer professional lighting design, installation, maintenance, take-down, and storage. From rooflines and trees to bushes and walkways, we handle it all so you never have to climb a ladder again.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Custom design & professional installation</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Maintenance, take-down & storage</li>
+              <li class="flex items-center gap-2 font-body text-white/60 text-xs"><svg class="w-3.5 h-3.5 text-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Rooflines, trees, bushes & walkways</li>
+            </ul>
+            <a href="christmas-lights.html" class="cta-btn inline-flex items-center gap-2 bg-green text-navy-deep font-body font-bold text-xs px-5 py-2.5 rounded-full">Learn More <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-green-dark"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(168,220,90,0.3) 0%, transparent 70%);"></div>
+    <div class="grain-overlay"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center fade-in">
+      <h2 class="font-display font-black text-3xl md:text-5xl text-navy-deep tracking-[-0.03em] mb-4">Schedule a Consultation</h2>
+      <p class="font-body text-navy/70 text-base md:text-lg leading-[1.7] mb-8 max-w-lg mx-auto">Let's get started on your dream landscape. Contact us for a free, no-obligation estimate.</p>
+      <a href="contact.html" class="cta-btn inline-flex items-center gap-2 bg-navy-deep text-white font-body font-bold text-sm px-8 py-4 rounded-full" style="box-shadow: 0 8px 24px rgba(5,30,58,0.4);">
+        Get a Free Quote <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy-deep border-t border-navy-light/15 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <div class="mb-5">
+            <img src="brand_assets/photos/Archscape-Logo-centered+text.jpeg" alt="Archscape Lawn Care & Service" class="h-16 w-auto object-contain" />
+          </div>
+          <p class="font-body text-white/50 text-sm leading-[1.7] mb-5">Professional landscaping, hardscaping, and outdoor services for Andover and surrounding communities.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 bg-navy-light/30 rounded-full flex items-center justify-center hover:bg-green/20 transition-[background] duration-200 focus-visible:outline-2 focus-visible:outline-green" aria-label="Facebook"><svg class="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="#" class="w-9 h-9 bg-navy-light/30 rounded-full flex items-center justify-center hover:bg-green/20 transition-[background] duration-200 focus-visible:outline-2 focus-visible:outline-green" aria-label="Instagram"><svg class="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-display font-semibold text-white text-sm tracking-wide mb-5">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">Home</a></li>
+            <li><a href="about.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">About</a></li>
+            <li><a href="services.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">Services</a></li>
+            <li><a href="christmas-lights.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">Christmas Lights</a></li>
+            <li><a href="contact.html" class="font-body text-white/50 text-sm hover:text-green transition-[color] duration-200">Contact & Quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-semibold text-white text-sm tracking-wide mb-5">Get In Touch</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3"><svg class="w-4 h-4 text-green mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg><a href="tel:9789417030" class="font-body text-white/60 text-sm hover:text-green transition-[color] duration-200">978-941-7030</a></li>
+            <li class="flex items-start gap-3"><svg class="w-4 h-4 text-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:archscapelcands@gmail.com" class="font-body text-white/60 text-sm hover:text-green transition-[color] duration-200">archscapelcands@gmail.com</a></li>
+            <li class="flex items-start gap-3"><svg class="w-4 h-4 text-green mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span class="font-body text-white/60 text-sm">Proudly serving Andover<br/>and the surrounding area</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-navy-light/15 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-body text-white/30 text-xs">© 2024 Archscape Lawn Care & Service. Est. 2021. Fully Licensed & Insured.</p>
+        <p class="font-body text-white/20 text-xs">Andover, MA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    let open = false;
+    btn.addEventListener('click', () => { open = !open; menu.classList.toggle('hidden-menu', !open); menu.classList.toggle('shown-menu', open); });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px 9999px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
