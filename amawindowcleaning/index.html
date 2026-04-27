@@ -1105,9 +1105,9 @@
             <svg class="w-4 h-4 flex-shrink-0" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
             <a href="mailto:amawindowcleaning@gmail.com" class="hover:text-white transition-[color]">amawindowcleaning@gmail.com</a>
           </li>
-          <li class="flex items-center gap-2.5 font-body text-white/45 text-sm">
-            <svg class="w-4 h-4 flex-shrink-0" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-            Central Massachusetts
+          <li class="flex items-start gap-2.5 font-body text-white/45 text-sm">
+            <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color:#50A0D0;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            <span>38 Dresser Hill Road<br/>Charlton, Massachusetts 01507</span>
           </li>
           <li class="font-body text-white/45 text-sm leading-[1.7] mt-1" style="padding-left: 1.6rem;">
             Mon&ndash;Fri: 8am&ndash;6pm<br/>Sat: 9am&ndash;3pm<br/>Sun: Closed
@@ -1117,25 +1117,46 @@
     </div>
 
     <div class="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-4" style="border-color: rgba(255,255,255,0.1);">
-      <p class="font-body text-white/30 text-xs">&copy; 2025 AMA Window Cleaning. All rights reserved.</p>
       <div class="flex items-center gap-4">
-        <p class="font-body text-white/30 text-xs">Serving Central Massachusetts with pride.</p>
-        <button onclick="document.getElementById('privacy-modal').classList.remove('hidden')" class="font-body text-white/30 text-xs hover:text-white/60 transition-[color] underline underline-offset-2">Privacy Policy</button>
+        <button onclick="document.getElementById('privacy-modal').classList.remove('hidden')" class="font-body text-white/50 text-xs hover:text-white/80 transition-[color] underline underline-offset-2">Privacy Policy</button>
+        <span class="font-body text-white/20 text-xs">|</span>
+        <button onclick="document.getElementById('tos-modal').classList.remove('hidden')" class="font-body text-white/50 text-xs hover:text-white/80 transition-[color] underline underline-offset-2">Terms of Service</button>
       </div>
+      <p class="font-body text-white/30 text-xs">&copy; 2025 AMA Window Cleaning. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
 <!-- Privacy Policy Modal -->
 <div id="privacy-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4" style="background:rgba(0,0,0,0.6);" onclick="if(event.target===this)this.classList.add('hidden')">
-  <div class="bg-white rounded-2xl max-w-lg w-full p-8 relative">
+  <div class="bg-white rounded-2xl max-w-lg w-full p-8 relative overflow-y-auto" style="max-height:90vh;">
     <button onclick="document.getElementById('privacy-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition-[color] text-xl leading-none">&times;</button>
     <h2 class="font-display font-800 text-navy text-xl mb-4">Privacy Policy</h2>
     <div class="font-body text-gray-600 text-sm leading-[1.7] space-y-3">
-      <p>AMA Window Cleaning collects only the information you voluntarily provide — such as your name, phone number, and email — when you request a quote or contact us.</p>
-      <p>We use this information solely to respond to your inquiry and schedule services. We do not sell, share, or distribute your information to third parties.</p>
-      <p>Our website does not use tracking cookies. Any data submitted through our contact forms is used only for business communication purposes.</p>
-      <p>For questions, contact us at <a href="mailto:amawindowcleaning@gmail.com" class="text-sky hover:underline">amawindowcleaning@gmail.com</a>.</p>
+      <p><strong class="text-gray-800">Information We Collect</strong><br/>AMA Window Cleaning collects only the information you voluntarily provide — such as your name, phone number, and email — when you contact us or request a quote.</p>
+      <p><strong class="text-gray-800">How We Use Your Information</strong><br/>We use your information solely to respond to your inquiry, schedule services, and communicate with you about your account or appointments. We do not sell, share, or distribute your information to third parties.</p>
+      <p><strong class="text-gray-800">SMS / Text Message Communications</strong><br/>By providing your phone number and consenting to receive text messages, you agree to receive SMS communications from AMA Window Cleaning regarding appointment confirmations, service reminders, and follow-ups. Message and data rates may apply. Message frequency varies. You can opt out at any time by replying STOP to any text message. For help, reply HELP or contact us at <a href="mailto:amawindowcleaning@gmail.com" class="text-sky hover:underline">amawindowcleaning@gmail.com</a>. We do not share your phone number with third parties for their marketing purposes.</p>
+      <p><strong class="text-gray-800">Cookies</strong><br/>Our website does not use tracking cookies. Any information submitted through our site is used only for business communication purposes.</p>
+      <p><strong class="text-gray-800">Contact</strong><br/>For questions about this policy, contact us at <a href="mailto:amawindowcleaning@gmail.com" class="text-sky hover:underline">amawindowcleaning@gmail.com</a> or (774) 402-0223.</p>
+      <p class="text-gray-400 text-xs">Last updated: April 2025</p>
+    </div>
+  </div>
+</div>
+
+<!-- Terms of Service Modal -->
+<div id="tos-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4" style="background:rgba(0,0,0,0.6);" onclick="if(event.target===this)this.classList.add('hidden')">
+  <div class="bg-white rounded-2xl max-w-lg w-full p-8 relative overflow-y-auto" style="max-height:90vh;">
+    <button onclick="document.getElementById('tos-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition-[color] text-xl leading-none">&times;</button>
+    <h2 class="font-display font-800 text-navy text-xl mb-4">Terms of Service</h2>
+    <div class="font-body text-gray-600 text-sm leading-[1.7] space-y-3">
+      <p><strong class="text-gray-800">Services</strong><br/>AMA Window Cleaning provides professional residential and commercial window cleaning services in Central Massachusetts. All services are performed by the owner, Austin Ayotte. Service scope and pricing are confirmed prior to each visit.</p>
+      <p><strong class="text-gray-800">Estimates & Pricing</strong><br/>Estimates are provided free of charge and are non-binding until confirmed in writing. Pricing may vary based on the number of windows, accessibility, and condition. Final pricing is confirmed before work begins.</p>
+      <p><strong class="text-gray-800">Scheduling & Cancellations</strong><br/>We ask that any cancellations or rescheduling requests be made at least 24 hours in advance. Repeated last-minute cancellations may result in a cancellation fee.</p>
+      <p><strong class="text-gray-800">Satisfaction Guarantee</strong><br/>We stand behind the quality of our work. If you are not satisfied with the results, contact us within 24 hours of service completion and we will return to address any concerns at no charge.</p>
+      <p><strong class="text-gray-800">Limitation of Liability</strong><br/>AMA Window Cleaning is fully insured. Our liability is limited to the cost of the service performed. We are not responsible for pre-existing damage to windows, frames, or surrounding property.</p>
+      <p><strong class="text-gray-800">SMS Communications</strong><br/>By providing your phone number, you consent to receive appointment-related text messages from AMA Window Cleaning. Reply STOP to opt out at any time. Message and data rates may apply.</p>
+      <p><strong class="text-gray-800">Governing Law</strong><br/>These terms are governed by the laws of the Commonwealth of Massachusetts.</p>
+      <p><strong class="text-gray-800">Contact</strong><br/>AMA Window Cleaning &mdash; 38 Dresser Hill Road, Charlton, MA 01507<br/>(774) 402-0223 &mdash; <a href="mailto:amawindowcleaning@gmail.com" class="text-sky hover:underline">amawindowcleaning@gmail.com</a></p>
       <p class="text-gray-400 text-xs">Last updated: April 2025</p>
     </div>
   </div>
