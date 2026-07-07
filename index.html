@@ -359,10 +359,7 @@
             <option>Interior Only Window Cleaning</option>
           </select>
         </div>
-        <button type="submit" class="btn w-full bg-blue text-white font-display font-700 uppercase tracking-wide text-sm py-4 rounded-lg hover:bg-sky mt-1" style="display:block; text-align:center;">
-          Get My Free Quote &rarr;
-        </button>
-        <div class="form-msg hidden font-body text-sm text-center py-2 px-4 rounded-lg"></div>
+        <input type="submit" value="Get My Free Quote →" class="btn w-full bg-blue text-white font-display font-700 uppercase tracking-wide text-sm py-4 rounded-lg hover:bg-sky mt-1 cursor-pointer" style="display:block; text-align:center;">
         <p class="font-body text-xs text-center text-textgray/50">We'll respond within 24 hours.</p>
       </form>
     </div>
@@ -1126,10 +1123,7 @@
             </select>
           </div>
         </div>
-        <button type="submit" class="btn w-full bg-blue text-white font-display font-700 uppercase tracking-wide text-sm py-4 rounded-lg hover:bg-sky mt-1" style="display:block; text-align:center;">
-          Request My Free Quote &rarr;
-        </button>
-        <div class="form-msg hidden font-body text-sm text-center py-2 px-4 rounded-lg"></div>
+        <input type="submit" value="Request My Free Quote →" class="btn w-full bg-blue text-white font-display font-700 uppercase tracking-wide text-sm py-4 rounded-lg hover:bg-sky mt-1 cursor-pointer" style="display:block; text-align:center;">
       </form>
     </div>
   </div>
@@ -1317,46 +1311,13 @@
 </script>
 
 
-<script>
-  document.querySelectorAll('.quote-form').forEach(function(form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
-      var msg = form.querySelector('.form-msg');
-      var originalText = btn.textContent;
-
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-
-      try {
-        var res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: new FormData(form)
-        });
-        var data = await res.json();
-        if (data.success) {
-          msg.classList.remove('hidden', 'bg-red-100', 'text-red-700');
-          msg.classList.add('bg-green-100', 'text-green-700');
-          msg.textContent = "Thanks! We'll be in touch within 24 hours.";
-          form.reset();
-        } else {
-          throw new Error(data.message || 'Submission failed');
-        }
-      } catch (err) {
-        msg.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-        msg.classList.add('bg-red-100', 'text-red-700');
-        msg.textContent = 'Something went wrong. Please call us at (774) 402-0223.';
-      } finally {
-        btn.disabled = false;
-        btn.textContent = originalText;
-      }
-    });
-  });
-</script>
-
 <!-- GoHighLevel chat widget — uncomment to re-enable
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69e19108dd7cf02b27fbb731"></script>
 -->
 
+<script
+  src="https://link.msgsndr.com/js/external-tracking.js"
+  data-tracking-id="tk_4986e3bb01e743afbd03d5d7de2416ff">
+</script>
 </body>
 </html>
